@@ -7,6 +7,7 @@ class Counter extends Component {
 
   render() {
     return (
+      //every render can only return one tag (ex. everything has to be inside <div> </div>)
       <div>
         <span>{this.formatCount()}</span>
 
@@ -17,7 +18,7 @@ class Counter extends Component {
 
   formatCount() {
     const { count } = this.state;
-    return count === 0 ? "Testing" : count;
+    return count === 0 ? "Zero" : count;
   }
 }
 export default Counter;
