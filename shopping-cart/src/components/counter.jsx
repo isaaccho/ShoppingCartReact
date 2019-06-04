@@ -23,6 +23,9 @@ class Counter extends Component {
         <button style={{ fontSize: 100 }} className="btn btn-secondary btn-sm">
           Increment
         </button>
+        <span>{this.formatCount()}</span>
+
+        <button>Increment</button>
       </div>
     );
   }
