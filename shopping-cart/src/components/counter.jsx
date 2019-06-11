@@ -2,32 +2,45 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    count: 0,
+    count: 1,
+    tags: ["tag1", "tag2", "tag3"],
     imageUrl: "https://picsum.photos/200"
   };
 
-  styles = {
-    fontSize: 50,
-    fontWeight: "bold"
-  };
+  constructor() {
+    super();
+    this.handleIncrement.bind(this);
+  }
 
+
+  handleIncrement() {
+    console.log("Increment button clicked");
+  }
   render() {
+    // using const means classes will stay constant  const classes = "badge m-2";
+
     return (
       //every render can only return one tag (ex. everything has to be inside <div> </div>)
       <div>
         <img src={this.state.imageUrl} alt="" />
-        <span style={this.styles} className="badge badge-warning m-2">
-          {this.formatCount()}
-        </span>
-
-        <button style={{ fontSize: 100 }} className="btn btn-secondary btn-sm">
+        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+        <button
+          onClick={this.handleIncrement}
+          className="btn btn-secondary btn-sm"
+        >
           Increment
         </button>
-        <span>{this.formatCount()}</span>
-
-        <button>Increment</button>
+        <ul>
+          <li />
+        </ul>
       </div>
     );
+  }
+
+  getBadgeClasses() {
+    let classes = "badge m-2 badge-";
+    classes += this.state.count === 0 ? "warning" : "primary";
+    return classes;
   }
 
   formatCount() {
